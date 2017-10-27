@@ -12,10 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'yukunlin/auto-pairs'
 Plugin 'mattn/emmet-vim'
-Plugin 'groenewege/vim-less'
-Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'flazz/vim-colorschemes'
@@ -26,18 +23,14 @@ Plugin 'elzr/vim-json'
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'edsono/vim-matchit'
-Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/MatchTagAlways'
 Plugin 'ap/vim-css-color'
-Plugin 'JulesWang/css.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'godlygeek/tabular'
 Plugin 'mileszs/ack.vim'
-Plugin 'Valloric/MatchTagAlways'
 Plugin 'mxw/vim-jsx'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/tsuquyomi'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'osyo-manga/vim-anzu'
@@ -47,7 +40,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'flowtype/vim-flow'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'roman/golden-ratio'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -67,7 +65,8 @@ filetype plugin indent on    " required
 syntax on
 set t_Co=256
 set background=dark
-colorscheme hybrid_reverse
+let g:solarized_termtrans =  1
+colorscheme solarized
 set colorcolumn=80
 set number
 set backspace=indent,eol,start
@@ -93,6 +92,7 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 set smarttab
+set splitright
 
 " update leader to \,\
 let mapleader=","
@@ -112,6 +112,14 @@ noremap <C-L> <C-W>l
 noremap <C-H> <C-W>h
 
 " ----------
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " less syntax
 " autocmd BufNewFile,BufRead *.less set filetype=less
@@ -153,6 +161,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
+let g:ycm_key_list_select_completion = ['<Down>']
 set completeopt-=preview
 
 " make NERDTree appear on left
@@ -165,10 +174,7 @@ let g:airline_theme='bubblegum'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch = '⎇'
+let g:airline_powerline_fonts = 1
 " Enable the list of buffers
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#fnamemod = ':t'
@@ -178,47 +184,14 @@ let g:airline_symbols.branch = '⎇'
 au! BufRead,BufNewFile *.json set filetype=json
 hi! def link jsonKeyword Identifier
 
-" let g:cssColorVimDoNotMessMyUpdatetime = 1
-" let g:ycm_filetype_specific_completion_to_disable = {"hbs":1, "html":1}
-" let g:UltiSnipsExpandTrigger="<C-c>"
-
-" Syntastic Settings
-let g:syntastic_javascript_checkers = ['eslint']
-" ----- scrooloose/syntastic settings -----
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
-augroup END
-
-au FileType javascript :call SetLocalEslint()
-fun! SetLocalEslint()
-    let lcd = fnameescape(getcwd())
-    silent! exec "lcd" expand('%:p:h')
-    let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-
-    if matchstr(local_eslint, "^\/\\w") == ''
-        let local_eslint = fnameescape(getcwd()) . "/" . local_eslint
-    endif
-
-    if executable(local_eslint)
-        let b:syntastic_javascript_eslint_exec = local_eslint
-    endif
-
-    exec "lcd" lcd
-endfun
-
-
-" tagbar settings
-" nmap <F8> :TagbarToggle<CR>
-" let g:airline#extensions#tagbar#enabled = 1
-" let g:airline#extensions#tagbar#flags = 's'
+" ale settings
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fixers = {
+  \ 'javascript': ['prettier']
+  \ }
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--double-quote --trailing-comma es5 '
 
 " ctrlp
 let g:ctrlp_map = '<c-p>'
@@ -265,7 +238,7 @@ let g:mta_filetypes = {
     \}
 
 " Retab before saving file
-autocmd BufWritePre * :retab
+" autocmd BufWritePre * :retab
 
 " Enable jsx inside js
 let g:jsx_ext_required = 0
@@ -290,7 +263,6 @@ let g:user_emmet_settings = {
   \    'indent_blockelement': 1,
   \  },
 \}
-
 " block cursor
 let &t_ti.="\e[1 q"
 let &t_SI.="\e[5 q"
