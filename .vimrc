@@ -45,6 +45,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'roman/golden-ratio'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -115,8 +117,7 @@ noremap <C-H> <C-W>h
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -187,11 +188,17 @@ hi! def link jsonKeyword Identifier
 " ale settings
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
+
 let g:ale_fixers = {
-  \ 'javascript': ['prettier']
-  \ }
+\ 'javascript': ['prettier'],
+\ 'typescript': ['prettier'],
+\ 'typescript.tsx': ['prettier'],
+\ 'json': ['prettier'],
+\ 'css': ['prettier']
+\ }
+
 let g:ale_fix_on_save = 1
-let g:ale_javascript_prettier_options = '--double-quote --trailing-comma es5 '
+let g:ale_javascript_prettier_use_local_config = 1
 
 " ctrlp
 let g:ctrlp_map = '<c-p>'
