@@ -47,6 +47,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -188,6 +190,11 @@ hi! def link jsonKeyword Identifier
 " ale settings
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
+let g:ale_linters = {
+\   'html': [''],
+\   'handlebars': [''],
+\}
+
 
 let g:ale_fixers = {
 \ 'javascript': ['prettier'],
@@ -318,3 +325,20 @@ endif
 
 " Flow settings
 let g:flow#autoclose=1
+
+autocmd FileType ts UltiSnipsAddFiletypes javascript-mocha
+
+" Typescript support for YCM
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+" tsuquyomi show autocomplete
+let g:tsuquyomi_completion_detail = 1
+let g:tsuquyomi_use_local_typescript=1
+autocmd FileType typescript setlocal completeopt-=menu
+
+" set filetypes as typescript.jsx
+" petailin jsx typescript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.jsx
