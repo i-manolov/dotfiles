@@ -1,0 +1,13 @@
+balsamiq-mockups
+dbvisualizer
+firefox-developer-edition
+font-firacode-nerd-font
+font-hack-nerd-font
+insomnia
+intellij-idea-ce
+iterm2
+java
+qmk-toolbox
+rowanj-gitx
+spectacle
+stretchly
