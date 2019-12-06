@@ -72,6 +72,7 @@ name = "lang#markdown"
 
 [[layers]]
 name = "git"
+git-plugin = "fugitive"
 
 [[layers]]
 name = "tools"
