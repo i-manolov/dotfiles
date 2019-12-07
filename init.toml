@@ -30,6 +30,11 @@
     enable_ale = true
     autocomplete_method = "coc"
     bootstrap_after = "myspacevim#after"
+    default_indent = 4
+
+[[layers]]
+name = 'core'
+filetree_show_hidden = true
 
 # Enable autocomplete layer
 [[layers]]
