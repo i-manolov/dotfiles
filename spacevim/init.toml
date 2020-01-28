@@ -91,6 +91,9 @@ name = "tools"
 name = "junegunn/fzf.vim"
 merged = false
 
+[[custom_plugins]]
+name = "psf/black"
+merged = false
 
 [[custom_plugins]]
 name = "jceb/vim-orgmode"
