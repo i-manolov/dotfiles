@@ -26,6 +26,8 @@ function! myspacevim#after() abort
       autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
   augroup END
 
+  autocmd BufWritePre *.py execute ':Black'
+
   " fzf file fuzzy search that respects .gitignore
   " If in git directory, show only files that are committed, staged, or unstaged
   " else use regular :Files
