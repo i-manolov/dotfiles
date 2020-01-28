@@ -60,13 +60,17 @@ name = "lang#typescript"
 name = "lang#dockerfile"
 
 [[layers]]
+name = "lang#python"
+
+[[layers]]
 name = "fzf"
 
 [[layers]]
 name = "lsp"
 filetypes = [
   "javascript",
-  "typescript"
+  "typescript",
+  "python"
 ]
 
 [[layers]]
