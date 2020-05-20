@@ -9,5 +9,5 @@ iterm2
 java
 qmk-toolbox
 rowanj-gitx
-spectacle
+rectangle
 stretchly
