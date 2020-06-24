@@ -1,5 +1,3 @@
-balsamiq-mockups
-dbvisualizer
 firefox-developer-edition
 font-firacode-nerd-font
 font-hack-nerd-font
