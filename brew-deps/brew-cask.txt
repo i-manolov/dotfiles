@@ -1,10 +1,7 @@
 firefox-developer-edition
-font-firacode-nerd-font
-font-hack-nerd-font
+font-fira-code-nerd-font
 insomnia
-intellij-idea-ce
 iterm2
-java
 qmk-toolbox
 rowanj-gitx
 rectangle
