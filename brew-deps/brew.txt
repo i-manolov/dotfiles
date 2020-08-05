@@ -1,4 +1,5 @@
 asdf
+bluetoothconnector
 curl
 fzf
 git
