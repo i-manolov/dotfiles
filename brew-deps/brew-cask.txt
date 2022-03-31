@@ -6,3 +6,5 @@ qmk-toolbox
 rowanj-gitx
 rectangle
 stretchly
+vitamin-r
+tableplus
