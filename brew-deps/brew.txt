@@ -1,11 +1,8 @@
 asdf
-bluetoothconnector
 curl
 fzf
 git
 httpie
-neovim
-ripgrep
 thefuck
 tig
 z
