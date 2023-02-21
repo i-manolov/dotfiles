@@ -7,3 +7,4 @@ rectangle
 stretchly
 vitamin-r
 tableplus
+visual-studio-code
