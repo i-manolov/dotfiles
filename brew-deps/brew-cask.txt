@@ -11,3 +11,5 @@ visual-studio-code
 google-chrome
 krisp
 dash4
+alfred
+docker
