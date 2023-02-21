@@ -3,7 +3,6 @@ font-fira-code-nerd-font
 insomnia
 iterm2
 qmk-toolbox
-rowanj-gitx
 rectangle
 stretchly
 vitamin-r
