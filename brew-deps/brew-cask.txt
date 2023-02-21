@@ -8,3 +8,6 @@ stretchly
 vitamin-r
 tableplus
 visual-studio-code
+google-chrome
+krisp
+dash4
