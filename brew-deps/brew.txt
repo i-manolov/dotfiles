@@ -3,6 +3,7 @@ curl
 fzf
 git
 httpie
+jq
 thefuck
 tig
 z
