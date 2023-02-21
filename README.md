@@ -4,6 +4,7 @@
 ```sh
 xargs brew install < brew.txt
 ```
+- [prezto](https://github.com/sorin-ionescu/prezto)
 
 - [iTerm as guake](https://www.sharmaprakash.com.np/guake-like-dropdown-terminal-in-mac/)
 
